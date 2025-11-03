@@ -1,59 +1,38 @@
 import streamlit as st
-import json, random, os
+import json
+import random
+import os
 
-# Base directory for JSON files
+# Base directory
 BASE_DIR = os.path.dirname(__file__)
 QUESTIONS_FILE = os.path.join(BASE_DIR, "questions.json")
-LEADERBOARD_FILE = os.path.join(BASE_DIR, "leaderboard.json")
 
 # Load questions
 with open(QUESTIONS_FILE, "r") as f:
     questions = json.load(f)
 
-# Leaderboard functions
-def load_leaderboard():
-    if os.path.exists(LEADERBOARD_FILE):
-        with open(LEADERBOARD_FILE, "r") as f:
-            return json.load(f)
-    return []
+# Shuffle questions
+shuffled_questions = questions.copy()
+random.shuffle(shuffled_questions)
 
-def save_leaderboard(data):
-    with open(LEADERBOARD_FILE, "w") as f:
-        json.dump(data, f, indent=2)
+st.title("Quiz Game 🎯")
 
-# Streamlit App
-st.title("🎯 Quiz Game")
+# Initialize score
+if "score" not in st.session_state:
+    st.session_state.score = 0
 
-# Input player name
-player_name = st.text_input("Enter your name:", "")
+# Loop through questions
+for idx, q in enumerate(shuffled_questions):
+    st.subheader(q["q"])
+    options = q["options"]
+    user_answer = st.radio("Choose an answer:", options, key=f"radio_{idx}")
 
-if st.button("Start Quiz") and player_name:
-    score = 0
-    shuffled_questions = questions.copy()
-    random.shuffle(shuffled_questions)
+    if st.button("Submit Answer", key=f"btn_{idx}"):
+        if user_answer == q["a"]:
+            st.success("✅ Correct!")
+            st.session_state.score += 1
+        else:
+            st.error(f"❌ Wrong! Correct answer: {q['a']}")
+        st.write("---")
 
-    for q in shuffled_questions:
-        st.subheader(q["question"])
-        options = q["options"]
-        user_answer = st.radio("Choose an answer:", options, key=q["question"])
-        if st.button("Submit Answer", key=q["question"] + "_btn"):
-            if user_answer == q["answer"]:
-                st.success("✅ Correct!")
-                score += 1
-            else:
-                st.error(f"❌ Wrong! Correct answer: {q['answer']}")
-            st.write("---")
-
-    st.write(f"### 🎉 {player_name}, your final score: {score}/{len(shuffled_questions)}")
-
-    # Update leaderboard
-    leaderboard = load_leaderboard()
-    leaderboard.append({"name": player_name, "score": score})
-    leaderboard = sorted(leaderboard, key=lambda x: x["score"], reverse=True)
-    save_leaderboard(leaderboard)
-
-# Show leaderboard
-st.subheader("🏆 Leaderboard")
-leaderboard = load_leaderboard()
-for entry in leaderboard[:10]:
-    st.write(f"{entry['name']} - {entry['score']}")
+st.write(f"Your score: {st.session_state.score} / {len(shuffled_questions)}")
