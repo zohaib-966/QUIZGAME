@@ -53,7 +53,8 @@ else:
 
     # Submit button
     if st.button("Submit Answer", key=f"btn_{st.session_state.current_q}"):
-        st.session_state[radio_key] = user_answer  # save the selection
+        # Safe update of session_state
+        st.session_state.update({radio_key: user_answer})
 
         if user_answer == q["a"]:
             st.success("✅ Correct!")

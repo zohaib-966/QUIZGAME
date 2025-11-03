@@ -1,17 +1,77 @@
 [
-    {"q": "What is the capital of Pakistan?", "options":["Lahore","Karachi","Islamabad","Quetta"], "a": "Islamabad"},
-    {"q": "Which programming language are we learning?", "options":["C++","Python","Java","JavaScript"], "a": "Python"},
-    {"q": "What is 5 + 7?", "options":["10","12","11","14"], "a": "12"},
-    {"q": "Python was created by which person?", "options":["Rossum","Gosling","Torvalds","Jobs"], "a": "Rossum"},
-    {"q": "Which keyword is used for functions in Python?", "options":["function","def","fun","lambda"], "a": "def"},
-    {"q": "What is the capital of France?", "options":["Paris","London","Rome","Berlin"], "a": "Paris"},
-    {"q": "Who wrote 'Harry Potter'?", "options":["Tolkien","J.K. Rowling","Rowling","Lewis"], "a": "J.K. Rowling"},
-    {"q": "What is 9 * 8?", "options":["72","64","81","70"], "a": "72"},
-    {"q": "Which planet is known as the Red Planet?", "options":["Earth","Venus","Mars","Jupiter"], "a": "Mars"},
-    {"q": "What is the boiling point of water in Celsius?", "options":["90","100","80","120"], "a": "100"},
-    {"q": "Which language is used for web apps?", "options":["Python","C++","JavaScript","Ruby"], "a": "JavaScript"},
-    {"q": "Who is the CEO of Tesla?", "options":["Elon Musk","Jeff Bezos","Bill Gates","Steve Jobs"], "a": "Elon Musk"},
-    {"q": "What is the largest mammal?", "options":["Elephant","Blue Whale","Giraffe","Shark"], "a": "Blue Whale"},
-    {"q": "Which country has the Great Wall?", "options":["China","India","Japan","USA"], "a": "China"},
-    {"q": "Which ocean is the deepest?", "options":["Atlantic","Indian","Pacific","Arctic"], "a": "Pacific"}
+    {
+        "q": "What is the capital of France?",
+        "options": ["Paris", "London", "Rome", "Berlin"],
+        "a": "Paris"
+    },
+    {
+        "q": "Which planet is known as the Red Planet?",
+        "options": ["Earth", "Mars", "Jupiter", "Venus"],
+        "a": "Mars"
+    },
+    {
+        "q": "Who wrote 'Romeo and Juliet'?",
+        "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+        "a": "William Shakespeare"
+    },
+    {
+        "q": "What is the largest ocean on Earth?",
+        "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+        "a": "Pacific"
+    },
+    {
+        "q": "Which programming language is used for web development along with HTML and CSS?",
+        "options": ["Python", "JavaScript", "C++", "Java"],
+        "a": "JavaScript"
+    },
+    {
+        "q": "Which gas do plants absorb from the atmosphere?",
+        "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+        "a": "Carbon Dioxide"
+    },
+    {
+        "q": "What is the square root of 144?",
+        "options": ["10", "12", "14", "16"],
+        "a": "12"
+    },
+    {
+        "q": "Who painted the Mona Lisa?",
+        "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+        "a": "Leonardo da Vinci"
+    },
+    {
+        "q": "Which is the smallest prime number?",
+        "options": ["0", "1", "2", "3"],
+        "a": "2"
+    },
+    {
+        "q": "What is the chemical symbol for Gold?",
+        "options": ["Au", "Ag", "Gd", "Go"],
+        "a": "Au"
+    },
+    {
+        "q": "Which continent is the Sahara Desert located in?",
+        "options": ["Asia", "Africa", "Australia", "South America"],
+        "a": "Africa"
+    },
+    {
+        "q": "Who is known as the father of computers?",
+        "options": ["Alan Turing", "Charles Babbage", "Tim Berners-Lee", "Bill Gates"],
+        "a": "Charles Babbage"
+    },
+    {
+        "q": "Which is the fastest land animal?",
+        "options": ["Lion", "Tiger", "Cheetah", "Leopard"],
+        "a": "Cheetah"
+    },
+    {
+        "q": "What is the hardest natural substance on Earth?",
+        "options": ["Diamond", "Gold", "Iron", "Platinum"],
+        "a": "Diamond"
+    },
+    {
+        "q": "Which country gifted the Statue of Liberty to the USA?",
+        "options": ["France", "England", "Germany", "Italy"],
+        "a": "France"
+    }
 ]
