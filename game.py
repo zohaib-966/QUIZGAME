@@ -30,26 +30,36 @@ if "current_q" not in st.session_state:
 if st.session_state.current_q >= len(st.session_state.shuffled_questions):
     st.success("🎉 Quiz Completed!")
     st.write(f"Your score: {st.session_state.score} / {len(st.session_state.shuffled_questions)}")
-    st.stop()  # Stop execution after quiz ends
+else:
+    # Current question
+    q = st.session_state.shuffled_questions[st.session_state.current_q]
+    st.subheader(f"Question {st.session_state.current_q + 1}: {q['q']}")
+    options = q["options"]
 
-# Current question
-q = st.session_state.shuffled_questions[st.session_state.current_q]
+    # Radio button key
+    radio_key = f"radio_{st.session_state.current_q}"
 
-st.subheader(f"Question {st.session_state.current_q + 1}: {q['q']}")
-options = q["options"]
+    # Reset radio selection for new question
+    if radio_key not in st.session_state:
+        st.session_state[radio_key] = None
 
-# Radio buttons for options
-user_answer = st.radio("Choose an answer:", options, key=f"radio_{st.session_state.current_q}")
+    # Radio buttons
+    user_answer = st.radio(
+        "Choose an answer:",
+        options,
+        index=0 if st.session_state[radio_key] is None else options.index(st.session_state[radio_key]),
+        key=radio_key
+    )
 
-# Submit button
-if st.button("Submit Answer", key=f"btn_{st.session_state.current_q}"):
-    if user_answer == q["a"]:
-        st.success("✅ Correct!")
-        st.session_state.score += 1
-    else:
-        st.error(f"❌ Wrong! Correct answer: {q['a']}")
-    
-    # Move to next question
-    st.session_state.current_q += 1
-    st.experimental_rerun()  # Safe rerun after updating state
+    # Submit button
+    if st.button("Submit Answer", key=f"btn_{st.session_state.current_q}"):
+        st.session_state[radio_key] = user_answer  # save the selection
 
+        if user_answer == q["a"]:
+            st.success("✅ Correct!")
+            st.session_state.score += 1
+        else:
+            st.error(f"❌ Wrong! Correct answer: {q['a']}")
+
+        # Move to next question
+        st.session_state.current_q += 1
