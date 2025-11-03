@@ -1,0 +1,17 @@
+[
+    {"q": "What is the capital of Pakistan?", "options":["Lahore","Karachi","Islamabad","Quetta"], "a": "Islamabad"},
+    {"q": "Which programming language are we learning?", "options":["C++","Python","Java","JavaScript"], "a": "Python"},
+    {"q": "What is 5 + 7?", "options":["10","12","11","14"], "a": "12"},
+    {"q": "Python was created by which person?", "options":["Rossum","Gosling","Torvalds","Jobs"], "a": "Rossum"},
+    {"q": "Which keyword is used for functions in Python?", "options":["function","def","fun","lambda"], "a": "def"},
+    {"q": "What is the capital of France?", "options":["Paris","London","Rome","Berlin"], "a": "Paris"},
+    {"q": "Who wrote 'Harry Potter'?", "options":["Tolkien","J.K. Rowling","Rowling","Lewis"], "a": "J.K. Rowling"},
+    {"q": "What is 9 * 8?", "options":["72","64","81","70"], "a": "72"},
+    {"q": "Which planet is known as the Red Planet?", "options":["Earth","Venus","Mars","Jupiter"], "a": "Mars"},
+    {"q": "What is the boiling point of water in Celsius?", "options":["90","100","80","120"], "a": "100"},
+    {"q": "Which language is used for web apps?", "options":["Python","C++","JavaScript","Ruby"], "a": "JavaScript"},
+    {"q": "Who is the CEO of Tesla?", "options":["Elon Musk","Jeff Bezos","Bill Gates","Steve Jobs"], "a": "Elon Musk"},
+    {"q": "What is the largest mammal?", "options":["Elephant","Blue Whale","Giraffe","Shark"], "a": "Blue Whale"},
+    {"q": "Which country has the Great Wall?", "options":["China","India","Japan","USA"], "a": "China"},
+    {"q": "Which ocean is the deepest?", "options":["Atlantic","Indian","Pacific","Arctic"], "a": "Pacific"}
+]
