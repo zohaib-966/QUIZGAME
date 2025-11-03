@@ -16,51 +16,44 @@ if "shuffled_questions" not in st.session_state:
     st.session_state.shuffled_questions = questions.copy()
     random.shuffle(st.session_state.shuffled_questions)
 
-st.title("Quiz Game 🎯")
-
-# Initialize score
+# Initialize quiz state
 if "score" not in st.session_state:
     st.session_state.score = 0
-
-# Initialize current question index
 if "current_q" not in st.session_state:
     st.session_state.current_q = 0
 
-# Check if quiz is finished
-if st.session_state.current_q >= len(st.session_state.shuffled_questions):
-    st.success("🎉 Quiz Completed!")
-    st.write(f"Your score: {st.session_state.score} / {len(st.session_state.shuffled_questions)}")
-else:
-    # Current question
-    q = st.session_state.shuffled_questions[st.session_state.current_q]
-    st.subheader(f"Question {st.session_state.current_q + 1}: {q['q']}")
-    options = q["options"]
+st.title("Quiz Game 🎯")
 
-    # Radio button key
-    radio_key = f"radio_{st.session_state.current_q}"
+# Current question index
+idx = st.session_state.current_q
 
-    # Reset radio selection for new question
-    if radio_key not in st.session_state:
-        st.session_state[radio_key] = None
-
-    # Radio buttons
-    user_answer = st.radio(
-        "Choose an answer:",
-        options,
-        index=0 if st.session_state[radio_key] is None else options.index(st.session_state[radio_key]),
-        key=radio_key
-    )
+if idx < len(st.session_state.shuffled_questions):
+    q = st.session_state.shuffled_questions[idx]
+    st.subheader(f"Question {idx + 1}: {q['q']}")
+    
+    # Unique key for radio button
+    radio_key = f"q_{idx}"
+    user_answer = st.radio("Choose an answer:", q["options"], key=radio_key)
 
     # Submit button
-    if st.button("Submit Answer", key=f"btn_{st.session_state.current_q}"):
-        # Safe update of session_state
-        st.session_state.update({radio_key: user_answer})
-
+    submit_key = f"submit_{idx}"
+    if st.button("Submit Answer", key=submit_key):
         if user_answer == q["a"]:
             st.success("✅ Correct!")
             st.session_state.score += 1
         else:
             st.error(f"❌ Wrong! Correct answer: {q['a']}")
-
+        
         # Move to next question
         st.session_state.current_q += 1
+        st.experimental_rerun()
+else:
+    st.write("### Quiz Finished!")
+    st.write(f"Your final score: {st.session_state.score} / {len(st.session_state.shuffled_questions)}")
+
+    # Optional: Restart button
+    if st.button("Restart Quiz"):
+        st.session_state.current_q = 0
+        st.session_state.score = 0
+        random.shuffle(st.session_state.shuffled_questions)
+        st.experimental_rerun()
