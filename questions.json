@@ -1,77 +1,79 @@
 [
     {
-        "q": "What is the capital of France?",
+        "question": "What is the capital of France?",
         "options": ["Paris", "London", "Rome", "Berlin"],
-        "a": "Paris"
+        "answer": "Paris"
     },
     {
-        "q": "Which planet is known as the Red Planet?",
+        "question": "Which planet is known as the Red Planet?",
         "options": ["Earth", "Mars", "Jupiter", "Venus"],
-        "a": "Mars"
+        "answer": "Mars"
     },
     {
-        "q": "Who wrote 'Romeo and Juliet'?",
+        "question": "Who wrote 'Romeo and Juliet'?",
         "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
-        "a": "William Shakespeare"
+        "answer": "William Shakespeare"
     },
     {
-        "q": "What is the largest ocean on Earth?",
+        "question": "What is the largest ocean on Earth?",
         "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
-        "a": "Pacific"
+        "answer": "Pacific"
     },
     {
-        "q": "Which programming language is used for web development along with HTML and CSS?",
+        "question": "Which programming language is used for web development along with HTML and CSS?",
         "options": ["Python", "JavaScript", "C++", "Java"],
-        "a": "JavaScript"
+        "answer": "JavaScript"
     },
     {
-        "q": "Which gas do plants absorb from the atmosphere?",
+        "question": "Which gas do plants absorb from the atmosphere?",
         "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
-        "a": "Carbon Dioxide"
+        "answer": "Carbon Dioxide"
     },
     {
-        "q": "What is the square root of 144?",
+        "question": "What is the square root of 144?",
         "options": ["10", "12", "14", "16"],
-        "a": "12"
+        "answer": "12"
     },
     {
-        "q": "Who painted the Mona Lisa?",
+        "question": "Who painted the Mona Lisa?",
         "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
-        "a": "Leonardo da Vinci"
+        "answer": "Leonardo da Vinci"
     },
     {
-        "q": "Which is the smallest prime number?",
+        "question": "Which is the smallest prime number?",
         "options": ["0", "1", "2", "3"],
-        "a": "2"
+        "answer": "2"
     },
     {
-        "q": "What is the chemical symbol for Gold?",
+        "question": "What is the chemical symbol for Gold?",
         "options": ["Au", "Ag", "Gd", "Go"],
-        "a": "Au"
+        "answer": "Au"
     },
     {
-        "q": "Which continent is the Sahara Desert located in?",
+        "question": "Which continent is the Sahara Desert located in?",
         "options": ["Asia", "Africa", "Australia", "South America"],
-        "a": "Africa"
+        "answer": "Africa"
     },
     {
-        "q": "Who is known as the father of computers?",
+        "question": "Who is known as the father of computers?",
         "options": ["Alan Turing", "Charles Babbage", "Tim Berners-Lee", "Bill Gates"],
-        "a": "Charles Babbage"
+        "answer": "Charles Babbage"
     },
     {
-        "q": "Which is the fastest land animal?",
+        "question": "Which is the fastest land animal?",
         "options": ["Lion", "Tiger", "Cheetah", "Leopard"],
-        "a": "Cheetah"
+        "answer": "Cheetah"
     },
     {
-        "q": "What is the hardest natural substance on Earth?",
+        "question": "What is the hardest natural substance on Earth?",
         "options": ["Diamond", "Gold", "Iron", "Platinum"],
-        "a": "Diamond"
+        "answer": "Diamond"
     },
     {
-        "q": "Which country gifted the Statue of Liberty to the USA?",
+        "question": "Which country gifted the Statue of Liberty to the USA?",
         "options": ["France", "England", "Germany", "Italy"],
-        "a": "France"
+        "answer": "France"
     }
 ]
+        
+        

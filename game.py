@@ -1,22 +1,34 @@
 import streamlit as st
 import random
 import json
+import os
+
+st.set_page_config(page_title="Quiz App", page_icon="🧠")
+
+st.title("🧠 Simple Quiz App")
 
 # -------------------------------
 # Load questions from JSON
 # -------------------------------
 if "questions_loaded" not in st.session_state:
-    with open("questions.json", "r") as f:
-        st.session_state.questions = json.load(f)
-    random.shuffle(st.session_state.questions)
-    st.session_state.questions_loaded = True
+    json_path = os.path.abspath("questions.json")
+    st.write(f"📄 Loading questions from: `{json_path}`")
 
-# -------------------------------
-# Initialize session state
-# -------------------------------
-if "current_q" not in st.session_state:
+    with open("questions.json", "r", encoding="utf-8") as f:
+        questions = json.load(f)
+
+    # Validate questions
+    valid_questions = []
+    for i, q in enumerate(questions):
+        if all(k in q for k in ["question", "options", "answer"]):
+            valid_questions.append(q)
+        else:
+            st.warning(f"⚠️ Skipping question {i+1}: Missing keys {q}")
+
+    random.shuffle(valid_questions)
+    st.session_state.questions = valid_questions
+    st.session_state.questions_loaded = True
     st.session_state.current_q = 0
-if "score" not in st.session_state:
     st.session_state.score = 0
 
 # -------------------------------
@@ -25,27 +37,16 @@ if "score" not in st.session_state:
 if st.session_state.current_q < len(st.session_state.questions):
     q = st.session_state.questions[st.session_state.current_q]
 
-    # Safety check
-    if "question" not in q or "options" not in q or "answer" not in q:
-        st.error("⚠️ JSON question missing keys!")
-        st.stop()
+    st.subheader(f"Q{st.session_state.current_q + 1}: {q['question']}")
 
-    st.subheader(q["question"])
-
-    # Unique key for each radio button
     radio_key = f"radio_{st.session_state.current_q}"
-    if radio_key not in st.session_state:
-        st.session_state[radio_key] = None
-
     user_answer = st.radio(
         "Choose an answer:",
         q["options"],
-        index=0 if st.session_state[radio_key] is None else q["options"].index(st.session_state[radio_key]),
         key=radio_key
     )
 
     if st.button("Submit Answer"):
-        st.session_state[radio_key] = user_answer
         if user_answer == q["answer"]:
             st.success("✅ Correct!")
             st.session_state.score += 1
@@ -53,16 +54,14 @@ if st.session_state.current_q < len(st.session_state.questions):
             st.error(f"❌ Wrong! Correct answer: {q['answer']}")
 
         st.session_state.current_q += 1
-        st.experimental_rerun = lambda: None  # Safe dummy for Streamlit 1.51
-        st.experimental_rerun = None
+        st.rerun()
 
 else:
-    st.write("### 🎉 Quiz Finished!")
-    st.write(f"Your final score: {st.session_state.score} / {len(st.session_state.questions)}")
+    st.success("🎉 Quiz Finished!")
+    st.write(f"**Your final score:** {st.session_state.score} / {len(st.session_state.questions)}")
 
     if st.button("Restart Quiz"):
+        random.shuffle(st.session_state.questions)
         st.session_state.current_q = 0
         st.session_state.score = 0
-        random.shuffle(st.session_state.questions)
-        st.experimental_rerun = lambda: None
-        st.experimental_rerun = None
+        st.rerun()
